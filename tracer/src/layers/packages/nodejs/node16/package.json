@@ -1,0 +1,12 @@
+{
+  "name": "npm-dependencies-layer",
+  "version": "1.0.0",
+  "description": "Layer to bundle npm dependencies for Lambdas.",
+  "license": "ISC",
+  "dependencies": {
+    "@amaabca/sensitive-param-filter": "^1.2.3",
+    "@aws-sdk/client-secrets-manager": "^3.209.0",
+    "@aws-sdk/client-ssm": "^3.209.0",
+    "axios": "^1.1.3"
+  }
+}

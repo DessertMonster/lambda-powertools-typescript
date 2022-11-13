@@ -1,0 +1,35 @@
+{
+  "name": "lambda-powertools-typescript",
+  "version": "0.1.0",
+  "bin": {
+    "lambda-powertools-typescript": "bin/lambda-powertools-typescript.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@amaabca/sensitive-param-filter": "^1.2.3",
+    "@aws-lambda-powertools/tracer": "^1.4.1",
+    "@aws-sdk/client-secrets-manager": "^3.209.0",
+    "@aws-sdk/client-ssm": "^3.209.0",
+    "@types/aws-lambda": "^8.10.108",
+    "@types/jest": "^29.2.2",
+    "@types/node": "10.17.27",
+    "@types/prettier": "2.7.1",
+    "aws-cdk": "2.50.0",
+    "axios": "^1.1.3",
+    "jest": "^29.3.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "~4.8.4"
+  },
+  "dependencies": {
+    "@middy/core": "^3.6.2",
+    "aws-cdk-lib": "2.50.0",
+    "constructs": "^10.1.156",
+    "source-map-support": "^0.5.21"
+  }
+}

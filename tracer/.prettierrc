@@ -1,0 +1,24 @@
+{
+  "arrowParens": "always",
+  "embeddedLanguageFormatting": "auto",
+  "jsxSingleQuote": true,
+  "printWidth": 100,
+  "quoteProps": "as-needed",
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "useTabs": false,
+  "importOrder": [
+    "^@core/(.*)$",
+    "^\/opt\/client",
+    "<THIRD_PARTY_MODULES>",
+    "^\/opt\/api",
+    "^@server/(.*)$",
+    "^@ui/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderCaseInsensitive": true
+}
