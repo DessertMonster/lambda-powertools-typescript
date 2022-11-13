@@ -22,14 +22,16 @@ npm run build
 npx cdk deploy --all --require-approval never --profile AWS_PROFILE_NAME
 ```
 
-4. Save API key to Secrets Manager
-
-```bash
-aws apigateway get-api-keys --name-query PowertoolsApiKey --include-values --profile AWS_PROFILE_NAME | xargs -I {} aws secretsmanager create-secret --name PowertoolsApiKeySecret --secret-string {} --profile AWS_PROFILE_NAME
-```
-
-## Get API Gateway API key to test API endpoints in Postman
+4. Get API Gateway API key to test API endpoints in Postman
 
 ```bash
 aws apigateway get-api-keys --name-query PowertoolsApiKey --include-values --profile AWS_PROFILE_NAME
+```
+
+5. Save API key to Secrets Manager
+
+```bash
+aws apigateway get-api-keys --name-query PowertoolsApiKey --include-values --profile AWS_PROFILE_NAME | \
+jq '.items[0].value' | \
+xargs -I {} aws secretsmanager create-secret --name PowertoolsApiKeySecret --secret-string {} --profile AWS_PROFILE_NAME
 ```
