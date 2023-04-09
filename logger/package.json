@@ -1,0 +1,31 @@
+{
+  "name": "lambda-powertools-typescript-logger",
+  "version": "0.1.0",
+  "bin": {
+    "lambda-powertools-typescript-logger": "bin/lambda-powertools-typescript-logger.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@aws-lambda-powertools/logger": "^1.8.0",
+    "@middy/core": "^4.2.8",
+    "@types/aws-lambda": "^8.10.114",
+    "@types/jest": "^29.5.0",
+    "@types/node": "18.15.11",
+    "@types/prettier": "2.7.2",
+    "aws-cdk": "2.51.1",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "~5.0.4"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.51.1",
+    "constructs": "^10.1.156",
+    "source-map-support": "^0.5.21"
+  }
+}

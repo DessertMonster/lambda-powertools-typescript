@@ -1,0 +1,9 @@
+{
+  "name": "logger-npm-dependencies-layer",
+  "version": "1.0.0",
+  "description": "Layer to bundle npm dependencies for Lambdas.",
+  "license": "ISC",
+  "dependencies": {
+    "@middy/core": "^4.2.8"
+  }
+}
