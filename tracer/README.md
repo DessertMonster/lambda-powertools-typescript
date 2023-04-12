@@ -4,31 +4,31 @@ This is a CDK app that deploys a AWS Lambda function that demonstrates the usage
 
 ## Getting Started
 
-1. Install CDK dependencies
+### 1. Install CDK dependencies
 
 ```bash
 npm install
 ```
 
-2. Build the project
+### 2. Build the project
 
 ```bash
 npm run build
 ```
 
-3. Deploy CDK
+### 3. Deploy CDK
 
 ```bash
 npx cdk deploy --all --require-approval never --profile AWS_PROFILE_NAME
 ```
 
-4. Get API Gateway API key to test API endpoints in Postman
+### 4. Get API Gateway API key to test API endpoints in Postman
 
 ```bash
 aws apigateway get-api-keys --name-query PowertoolsApiKey --include-values --profile AWS_PROFILE_NAME
 ```
 
-5. Save API key to Secrets Manager
+### 5. Save API key to Secrets Manager
 
 ```bash
 aws apigateway get-api-keys --name-query PowertoolsApiKey --include-values --profile AWS_PROFILE_NAME | \
