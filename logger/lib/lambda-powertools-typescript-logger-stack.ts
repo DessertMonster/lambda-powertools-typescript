@@ -9,14 +9,14 @@ import { POWERTOOLS_SERVICE_NAME } from '../shared/constants';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
-type LoggerStack = cdk.StackProps & {
+type LoggerStackProps = cdk.StackProps & {
   tags: {
     environment: 'staging' | 'production';
   };
 };
 
 export class LambdaPowertoolsTypescriptLoggerStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: LoggerStack) {
+  constructor(scope: Construct, id: string, props?: LoggerStackProps) {
     super(scope, id, props);
 
     const env = props?.tags.environment ?? 'staging';
@@ -54,17 +54,17 @@ export class LambdaPowertoolsTypescriptLoggerStack extends cdk.Stack {
         },
         entry: path.join(__dirname, '/../src/lambdas/powertoolsMiddy/index.ts'),
         environment: {
-          LOG_LEVEL: env === 'staging' ? 'INFO' : 'WARN',
+          LOG_LEVEL: env === 'staging' ? 'DEBUG' : 'WARN',
           POWERTOOLS_LOGGER_LOG_EVENT: 'true',
           POWERTOOLS_SERVICE_NAME: `${POWERTOOLS_SERVICE_NAME.middy}-${env}`,
         },
         functionName: `${POWERTOOLS_SERVICE_NAME.middy}-logger-${env}`,
         handler: 'handler',
+        layers: [packagesLayer, powertoolsLayer],
         logRetention: RetentionDays.ONE_WEEK,
         memorySize: 128,
         runtime: Runtime.NODEJS_16_X,
         timeout: Duration.seconds(30),
-        layers: [packagesLayer, powertoolsLayer],
       }
     );
     lambdaPowertoolsMiddyFunction.addEventSource(loggerEventSource);
