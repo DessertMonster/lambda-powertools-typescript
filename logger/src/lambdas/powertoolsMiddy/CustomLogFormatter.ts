@@ -12,6 +12,7 @@ type LogAttributesWithContext = LogAttributes & {
   logLevel: LogLevel;
   lambda: {
     awsRequestId: string;
+    xrayTraceId: string;
     name: string;
     coldStart: boolean;
   };
@@ -24,7 +25,6 @@ enum logLevelIcon {
   WARN = '⚠️',
   ERROR = '🚨',
   CRITICAL = '🔥',
-  SILENT = '',
 }
 
 class CustomErrorFormatter extends LogFormatter {
@@ -39,11 +39,21 @@ class CustomErrorFormatter extends LogFormatter {
       logLevel: attributes.logLevel,
       lambda: {
         awsRequestId: attributes.lambdaContext!.awsRequestId,
+        xrayTraceId: attributes.xRayTraceId!,
         name: attributes.lambdaContext!.functionName,
         coldStart: attributes.lambdaContext!.coldStart,
       },
       message: `${logLevelIcon[uppercaseLogLevel]} ${uppercaseLogLevel}: ${attributes.message}`,
     };
+  }
+
+  // this gets called when we pass an error object to a Logger method
+  // as the second parameter like:
+  // logger.warn('A warning', new Error('An error object'));
+  //
+  public override formatError(error: Error): LogAttributes {
+    console.log('🚨🚨🚨🚨🚨👇🏼 Something went wrong 👇🏼🚨🚨🚨🚨🚨');
+    return super.formatError(error);
   }
 }
 
