@@ -6,6 +6,7 @@ import { LambdaPowertoolsTypescriptLoggerStack } from '../lib/lambda-powertools-
 const app = new cdk.App();
 new LambdaPowertoolsTypescriptLoggerStack(app, 'LambdaPowertoolsTypescriptLoggerStack', {
   tags: {
-    environment: 'production',
+    // Change environment to 'production' to only show 'warn', 'error', and 'critical' items
+    environment: 'staging',
   },
 });
